@@ -218,7 +218,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
+          type: string
         required: true
         description: The product ID
     get:
@@ -268,7 +268,7 @@ paths:
       - in: path
         name: pId
         schema:
-          type: integer
+          type: string
         required: true
         description: The product ID
     get:
@@ -322,7 +322,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
+          type: string
         required: true
         description: The review ID
     get:
@@ -413,7 +413,7 @@ paths:
       - in: path
         name: id
         schema:
-          type: integer
+          type: string
         required: true
         description: The order ID
     patch:
