@@ -27,8 +27,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
+    "swagger-ui-express": "^4.5.0",
     "validator": "^13.7.0",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.1",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
