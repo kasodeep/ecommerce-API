@@ -1,680 +1,680 @@
 openapi: 3.0.0
 info:
-  title: E-Commerce_API
-  contact:
-    name: Kasodariya Deep
-    email: deepkasodariya44@outlook.com
-  version: "1.0"
+    title: E-Commerce_API
+    contact:
+        name: Kasodariya Deep
+        email: deepkasodariya44@outlook.com
+    version: "1.0"
 servers:
-  - url: https://node-e-commerce-api.herokuapp.com/api/v1
-    variables: {}
+    - url: https://localhost:5000/api/v1
+      variables: {}
 paths:
-  /auth/login:
-    post:
-      tags:
-        - Auth
-      summary: User Login
-      operationId: UserLogin
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UserLoginRequest"
-            example:
-              email: xyz@gmail.com
-              password: "12345678"
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /auth/register:
-    post:
-      tags:
-        - Auth
-      summary: User Register
-      operationId: UserRegister
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UserRegisterRequest"
-            example:
-              name: Name
-              email: xyz@gmail.com
-              password: "12345678"
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /auth/logout:
-    get:
-      tags:
-        - Auth
-      summary: User Logout
-      operationId: UserLogout
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /users:
-    get:
-      tags:
-        - User
-      summary: Get All Users
-      operationId: GetAllUsers
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /users/showMe:
-    get:
-      tags:
-        - User
-      summary: Show Current User
-      operationId: ShowCurrentUser
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /users/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-        description: The user ID
-    get:
-      tags:
-        - User
-      summary: Get Single User
-      operationId: GetSingleUser
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /users/updateUser:
-    patch:
-      tags:
-        - User
-      summary: Update User
-      operationId: UpdateUser
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateUserRequest"
-            example:
-              name: name
-              email: xyz@gmail.com
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /users/updateUserPassword:
-    patch:
-      tags:
-        - User
-      summary: Update User Password
-      operationId: UpdateUserPassword
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateUserPasswordRequest"
-            example:
-              oldPassword: oldPassword
-              newPassword: newPassword
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /products:
-    get:
-      tags:
-        - Product
-      summary: Get All Products
-      operationId: GetAllProducts
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    post:
-      tags:
-        - Product
-      summary: Create Product
-      operationId: CreateProduct
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateProductRequest"
-            example:
-              name: Product Name
-              category: "['office', 'kitchen', 'bedroom', 'general']"
-              description: Product description
-              company: " ['ikea', 'liddy', 'marcos', 'oneplus', 'realme', 'other']"
-              price: 1
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /products/uploadImage:
-    post:
-      tags:
-        - Product
-      summary: Upload Image
-      operationId: UploadImage
-      parameters: []
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            encoding: {}
-            schema:
-              required:
-                - image
-              type: object
-              properties:
-                image:
+    /auth/login:
+        post:
+            tags:
+                - Auth
+            summary: User Login
+            operationId: UserLogin
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserLoginRequest"
+                        example:
+                            email: xyz@gmail.com
+                            password: "12345678"
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /auth/register:
+        post:
+            tags:
+                - Auth
+            summary: User Register
+            operationId: UserRegister
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UserRegisterRequest"
+                        example:
+                            name: Name
+                            email: xyz@gmail.com
+                            password: "12345678"
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /auth/logout:
+        get:
+            tags:
+                - Auth
+            summary: User Logout
+            operationId: UserLogout
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /users:
+        get:
+            tags:
+                - User
+            summary: Get All Users
+            operationId: GetAllUsers
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /users/showMe:
+        get:
+            tags:
+                - User
+            summary: Show Current User
+            operationId: ShowCurrentUser
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /users/{id}:
+        parameters:
+            - in: path
+              name: id
+              schema:
+                  type: integer
+              required: true
+              description: The user ID
+        get:
+            tags:
+                - User
+            summary: Get Single User
+            operationId: GetSingleUser
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /users/updateUser:
+        patch:
+            tags:
+                - User
+            summary: Update User
+            operationId: UpdateUser
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateUserRequest"
+                        example:
+                            name: name
+                            email: xyz@gmail.com
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /users/updateUserPassword:
+        patch:
+            tags:
+                - User
+            summary: Update User Password
+            operationId: UpdateUserPassword
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateUserPasswordRequest"
+                        example:
+                            oldPassword: oldPassword
+                            newPassword: newPassword
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /products:
+        get:
+            tags:
+                - Product
+            summary: Get All Products
+            operationId: GetAllProducts
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        post:
+            tags:
+                - Product
+            summary: Create Product
+            operationId: CreateProduct
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateProductRequest"
+                        example:
+                            name: Product Name
+                            category: "['office', 'kitchen', 'bedroom', 'general']"
+                            description: Product description
+                            company: " ['ikea', 'liddy', 'marcos', 'oneplus', 'realme', 'other']"
+                            price: 1
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /products/uploadImage:
+        post:
+            tags:
+                - Product
+            summary: Upload Image
+            operationId: UploadImage
+            parameters: []
+            requestBody:
+                content:
+                    application/x-www-form-urlencoded:
+                        encoding: {}
+                        schema:
+                            required:
+                                - image
+                            type: object
+                            properties:
+                                image:
+                                    type: string
+                required: false
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /products/{id}:
+        parameters:
+            - in: path
+              name: id
+              schema:
                   type: string
-        required: false
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /products/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The product ID
-    get:
-      tags:
-        - Product
-      summary: Get Single Product
-      operationId: GetSingleProduct
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    patch:
-      tags:
-        - Product
-      summary: Update Product
-      operationId: UpdateProduct
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateProductRequest"
-            example:
-              name: Deep Chair
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    delete:
-      tags:
-        - Product
-      summary: Delete Product
-      operationId: DeleteProduct
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /products/{pId}/reviews:
-    parameters:
-      - in: path
-        name: pId
-        schema:
-          type: string
-        required: true
-        description: The product ID
-    get:
-      tags:
-        - Product
-      summary: Get Single Product Reviews
-      operationId: GetSingleProductReviews
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /reviews:
-    get:
-      tags:
-        - Review
-      summary: Get All Reviews
-      operationId: GetAllReviews
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    post:
-      tags:
-        - Review
-      summary: Create Review
-      operationId: CreateReview
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateReviewRequest"
-            example:
-              product: product ID
-              rating: 4
-              title: title
-              comment: comment
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /reviews/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The review ID
-    get:
-      tags:
-        - Review
-      summary: Get Single Review
-      operationId: GetSingleReview
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    patch:
-      tags:
-        - Review
-      summary: Update Review
-      operationId: UpdateReview
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateReviewRequest"
-            example:
-              rating: 3
-              title: title
-              comment: comment
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    delete:
-      tags:
-        - Review
-      summary: Delete Review
-      operationId: DeleteReview
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /orders:
-    get:
-      tags:
-        - Order
-      summary: Get All Orders
-      operationId: GetAllOrders
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    post:
-      tags:
-        - Order
-      summary: Create Order
-      operationId: CreateOrder
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/CreateOrderRequest"
-            example:
-              tax: 399
-              shippingFee: 499
-              items:
-                - name: Arm Chair1
-                  price: 12599
-                  image: https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f
-                  amount: 2
-                  product: product ID
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /orders/{id}:
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-        description: The order ID
-    patch:
-      tags:
-        - Order
-      summary: Update Order
-      operationId: UpdateOrder
-      parameters: []
-      requestBody:
-        description: ""
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/UpdateOrderRequest"
-            example:
-              paymentIntentId: 3454434
-              status: "['pending', 'failed', 'paid', 'delivered', 'canceled']"
-        required: true
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-    get:
-      tags:
-        - Order
-      summary: Get Single Order
-      operationId: GetSingleOrder
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
-  /orders/showAllMyOrders:
-    get:
-      tags:
-        - Order
-      summary: Show Orders of Current User
-      operationId: ShowOrdersofCurrentUser
-      parameters: []
-      responses:
-        "200":
-          description: ""
-          headers: {}
-      deprecated: false
+              required: true
+              description: The product ID
+        get:
+            tags:
+                - Product
+            summary: Get Single Product
+            operationId: GetSingleProduct
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        patch:
+            tags:
+                - Product
+            summary: Update Product
+            operationId: UpdateProduct
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateProductRequest"
+                        example:
+                            name: Deep Chair
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        delete:
+            tags:
+                - Product
+            summary: Delete Product
+            operationId: DeleteProduct
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /products/{pId}/reviews:
+        parameters:
+            - in: path
+              name: pId
+              schema:
+                  type: string
+              required: true
+              description: The product ID
+        get:
+            tags:
+                - Product
+            summary: Get Single Product Reviews
+            operationId: GetSingleProductReviews
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /reviews:
+        get:
+            tags:
+                - Review
+            summary: Get All Reviews
+            operationId: GetAllReviews
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        post:
+            tags:
+                - Review
+            summary: Create Review
+            operationId: CreateReview
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateReviewRequest"
+                        example:
+                            product: product ID
+                            rating: 4
+                            title: title
+                            comment: comment
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /reviews/{id}:
+        parameters:
+            - in: path
+              name: id
+              schema:
+                  type: string
+              required: true
+              description: The review ID
+        get:
+            tags:
+                - Review
+            summary: Get Single Review
+            operationId: GetSingleReview
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        patch:
+            tags:
+                - Review
+            summary: Update Review
+            operationId: UpdateReview
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateReviewRequest"
+                        example:
+                            rating: 3
+                            title: title
+                            comment: comment
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        delete:
+            tags:
+                - Review
+            summary: Delete Review
+            operationId: DeleteReview
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /orders:
+        get:
+            tags:
+                - Order
+            summary: Get All Orders
+            operationId: GetAllOrders
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        post:
+            tags:
+                - Order
+            summary: Create Order
+            operationId: CreateOrder
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/CreateOrderRequest"
+                        example:
+                            tax: 399
+                            shippingFee: 499
+                            items:
+                                - name: Arm Chair1
+                                  price: 12599
+                                  image: https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f
+                                  amount: 2
+                                  product: product ID
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /orders/{id}:
+        parameters:
+            - in: path
+              name: id
+              schema:
+                  type: string
+              required: true
+              description: The order ID
+        patch:
+            tags:
+                - Order
+            summary: Update Order
+            operationId: UpdateOrder
+            parameters: []
+            requestBody:
+                description: ""
+                content:
+                    application/json:
+                        schema:
+                            $ref: "#/components/schemas/UpdateOrderRequest"
+                        example:
+                            paymentIntentId: 3454434
+                            status: "['pending', 'failed', 'paid', 'delivered', 'canceled']"
+                required: true
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+        get:
+            tags:
+                - Order
+            summary: Get Single Order
+            operationId: GetSingleOrder
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
+    /orders/showAllMyOrders:
+        get:
+            tags:
+                - Order
+            summary: Show Orders of Current User
+            operationId: ShowOrdersofCurrentUser
+            parameters: []
+            responses:
+                "200":
+                    description: ""
+                    headers: {}
+            deprecated: false
 components:
-  schemas:
-    UserLoginRequest:
-      title: UserLoginRequest
-      required:
-        - email
-        - password
-      type: object
-      properties:
-        email:
-          type: string
-        password:
-          type: string
-      example:
-        email: xyz@gmail.com
-        password: "12345678"
-    UserRegisterRequest:
-      title: UserRegisterRequest
-      required:
-        - name
-        - email
-        - password
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-        password:
-          type: string
-      example:
-        name: Name
-        email: xyz@gmail.com
-        password: "12345678"
-    UpdateUserRequest:
-      title: UpdateUserRequest
-      required:
-        - name
-        - email
-      type: object
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-      example:
-        name: name
-        email: xyz@gmail.com
-    UpdateUserPasswordRequest:
-      title: UpdateUserPasswordRequest
-      required:
-        - oldPassword
-        - newPassword
-      type: object
-      properties:
-        oldPassword:
-          type: string
-        newPassword:
-          type: string
-      example:
-        oldPassword: oldPassword
-        newPassword: newPassword
-    UpdateProductRequest:
-      title: UpdateProductRequest
-      required:
-        - name
-      type: object
-      properties:
-        name:
-          type: string
-      example:
-        name: Deep Chair
-    CreateProductRequest:
-      title: CreateProductRequest
-      required:
-        - name
-        - category
-        - description
-        - company
-        - price
-      type: object
-      properties:
-        name:
-          type: string
-        category:
-          type: string
-        description:
-          type: string
-        company:
-          type: string
-        price:
-          type: integer
-          format: int32
-      example:
-        name: Product Name
-        category: "['office', 'kitchen', 'bedroom', 'general']"
-        description: Product description
-        company: " ['ikea', 'liddy', 'marcos', 'oneplus', 'realme', 'other']"
-        price: 1
-    CreateReviewRequest:
-      title: CreateReviewRequest
-      required:
-        - product
-        - rating
-        - title
-        - comment
-      type: object
-      properties:
-        product:
-          type: string
-        rating:
-          type: integer
-          format: int32
-        title:
-          type: string
-        comment:
-          type: string
-      example:
-        product: product ID
-        rating: 4
-        title: title
-        comment: comment
-    UpdateReviewRequest:
-      title: UpdateReviewRequest
-      required:
-        - rating
-        - title
-        - comment
-      type: object
-      properties:
-        rating:
-          type: integer
-          format: int32
-        title:
-          type: string
-        comment:
-          type: string
-      example:
-        rating: 3
-        title: title
-        comment: comment
-    CreateOrderRequest:
-      title: CreateOrderRequest
-      required:
-        - tax
-        - shippingFee
-        - items
-      type: object
-      properties:
-        tax:
-          type: integer
-          format: int32
-        shippingFee:
-          type: integer
-          format: int32
-        items:
-          type: array
-          items:
-            $ref: "#/components/schemas/Item"
-          description: ""
-      example:
-        tax: 399
-        shippingFee: 499
-        items:
-          - name: Arm Chair1
-            price: 12599
-            image: https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f
-            amount: 2
-            product: product ID
-    Item:
-      title: Item
-      required:
-        - name
-        - price
-        - image
-        - amount
-        - product
-      type: object
-      properties:
-        name:
-          type: string
-        price:
-          type: integer
-          format: int32
-        image:
-          type: string
-        amount:
-          type: integer
-          format: int32
-        product:
-          type: string
-      example:
-        name: Arm Chair1
-        price: 12599
-        image: https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f
-        amount: 2
-        product: product ID
-    UpdateOrderRequest:
-      title: UpdateOrderRequest
-      required:
-        - paymentIntentId
-        - status
-      type: object
-      properties:
-        paymentIntentId:
-          type: integer
-          format: int32
-        status:
-          type: string
-      example:
-        paymentIntentId: 3454434
-        status: "['pending', 'failed', 'paid', 'delivered', 'canceled']"
+    schemas:
+        UserLoginRequest:
+            title: UserLoginRequest
+            required:
+                - email
+                - password
+            type: object
+            properties:
+                email:
+                    type: string
+                password:
+                    type: string
+            example:
+                email: xyz@gmail.com
+                password: "12345678"
+        UserRegisterRequest:
+            title: UserRegisterRequest
+            required:
+                - name
+                - email
+                - password
+            type: object
+            properties:
+                name:
+                    type: string
+                email:
+                    type: string
+                password:
+                    type: string
+            example:
+                name: Name
+                email: xyz@gmail.com
+                password: "12345678"
+        UpdateUserRequest:
+            title: UpdateUserRequest
+            required:
+                - name
+                - email
+            type: object
+            properties:
+                name:
+                    type: string
+                email:
+                    type: string
+            example:
+                name: name
+                email: xyz@gmail.com
+        UpdateUserPasswordRequest:
+            title: UpdateUserPasswordRequest
+            required:
+                - oldPassword
+                - newPassword
+            type: object
+            properties:
+                oldPassword:
+                    type: string
+                newPassword:
+                    type: string
+            example:
+                oldPassword: oldPassword
+                newPassword: newPassword
+        UpdateProductRequest:
+            title: UpdateProductRequest
+            required:
+                - name
+            type: object
+            properties:
+                name:
+                    type: string
+            example:
+                name: Deep Chair
+        CreateProductRequest:
+            title: CreateProductRequest
+            required:
+                - name
+                - category
+                - description
+                - company
+                - price
+            type: object
+            properties:
+                name:
+                    type: string
+                category:
+                    type: string
+                description:
+                    type: string
+                company:
+                    type: string
+                price:
+                    type: integer
+                    format: int32
+            example:
+                name: Product Name
+                category: "['office', 'kitchen', 'bedroom', 'general']"
+                description: Product description
+                company: " ['ikea', 'liddy', 'marcos', 'oneplus', 'realme', 'other']"
+                price: 1
+        CreateReviewRequest:
+            title: CreateReviewRequest
+            required:
+                - product
+                - rating
+                - title
+                - comment
+            type: object
+            properties:
+                product:
+                    type: string
+                rating:
+                    type: integer
+                    format: int32
+                title:
+                    type: string
+                comment:
+                    type: string
+            example:
+                product: product ID
+                rating: 4
+                title: title
+                comment: comment
+        UpdateReviewRequest:
+            title: UpdateReviewRequest
+            required:
+                - rating
+                - title
+                - comment
+            type: object
+            properties:
+                rating:
+                    type: integer
+                    format: int32
+                title:
+                    type: string
+                comment:
+                    type: string
+            example:
+                rating: 3
+                title: title
+                comment: comment
+        CreateOrderRequest:
+            title: CreateOrderRequest
+            required:
+                - tax
+                - shippingFee
+                - items
+            type: object
+            properties:
+                tax:
+                    type: integer
+                    format: int32
+                shippingFee:
+                    type: integer
+                    format: int32
+                items:
+                    type: array
+                    items:
+                        $ref: "#/components/schemas/Item"
+                    description: ""
+            example:
+                tax: 399
+                shippingFee: 499
+                items:
+                    - name: Arm Chair1
+                      price: 12599
+                      image: https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f
+                      amount: 2
+                      product: product ID
+        Item:
+            title: Item
+            required:
+                - name
+                - price
+                - image
+                - amount
+                - product
+            type: object
+            properties:
+                name:
+                    type: string
+                price:
+                    type: integer
+                    format: int32
+                image:
+                    type: string
+                amount:
+                    type: integer
+                    format: int32
+                product:
+                    type: string
+            example:
+                name: Arm Chair1
+                price: 12599
+                image: https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f
+                amount: 2
+                product: product ID
+        UpdateOrderRequest:
+            title: UpdateOrderRequest
+            required:
+                - paymentIntentId
+                - status
+            type: object
+            properties:
+                paymentIntentId:
+                    type: integer
+                    format: int32
+                status:
+                    type: string
+            example:
+                paymentIntentId: 3454434
+                status: "['pending', 'failed', 'paid', 'delivered', 'canceled']"
 tags:
-  - name: Auth
-  - name: User
-  - name: Product
-  - name: Review
-  - name: Order
+    - name: Auth
+    - name: User
+    - name: Product
+    - name: Review
+    - name: Order

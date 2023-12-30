@@ -33,7 +33,7 @@ ReviewSchema.index({ product: 1, user: 1 }, { unique: true })
 
 ReviewSchema.statics.calculateAverageRating = async function (productId) {
 
-    // We are aggregating here
+    // We are aggregating here.
     const result = await this.aggregate([
         {
             $match: { product: productId }
@@ -45,7 +45,7 @@ ReviewSchema.statics.calculateAverageRating = async function (productId) {
             }
         }])
 
-    // updating the product properties
+    // Updating the product properties.
     try {
         await this.model('Product').findOneAndUpdate({ _id: productId }, {
             averageRating: Math.ceil(result[0]?.averageRating || 0),
@@ -56,6 +56,7 @@ ReviewSchema.statics.calculateAverageRating = async function (productId) {
     }
 }
 
+// Post save and remove methods.
 ReviewSchema.post('save', async function () {
     await this.constructor.calculateAverageRating(this.product)
 })

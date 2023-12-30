@@ -5,7 +5,7 @@ const CustomError = require('../errors')
 const { checkPermissions } = require('../utils')
 
 
-// fake function
+// Fake function
 const fakeStripeAPI = async ({ amount, currency }) => {
     const client_secret = 'someRandomValue'
     return { client_secret, amount }
@@ -13,6 +13,7 @@ const fakeStripeAPI = async ({ amount, currency }) => {
 
 const createOrder = async (req, res) => {
 
+    // Creating the order.
     const { items: cartItems, tax, shippingFee } = req.body
     if (!cartItems || cartItems.length < 1) {
         throw new CustomError.BadRequestError('No Cart Items Provided')
@@ -21,7 +22,7 @@ const createOrder = async (req, res) => {
         throw new CustomError.BadRequestError('Please provide tax and shipping fee')
     }
 
-    // checking if product exist
+    // Checking if product exist.
     let orderItems = []; let subtotal = 0
     for (const item of cartItems) {
         const dbProduct = await Product.findOne({ _id: item.product })
@@ -45,16 +46,16 @@ const createOrder = async (req, res) => {
         subtotal += item.amount * price
     }
 
-    // calculate Total
+    // Calculate Total
     const total = tax + shippingFee + subtotal
 
-    // get client secret
+    // Get client secret
     const paymentIntent = await fakeStripeAPI({
         amount: total,
         currrency: 'usd'
     })
 
-    // creating the order
+    // Creating the order
     const order = await Order.create({
         orderItems,
         total,
@@ -69,7 +70,6 @@ const createOrder = async (req, res) => {
 }
 
 const getAllOrders = async (req, res) => {
-
     const orders = await Order.find({})
     res.status(StatusCodes.OK).json({ orders, count: orders.length })
 }

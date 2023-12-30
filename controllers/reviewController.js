@@ -6,6 +6,7 @@ const CustomError = require('../errors')
 
 const createReview = async (req, res) => {
 
+    // Creating the Review.
     const { product: productId } = req.body
 
     const isValidProduct = await Product.findOne({ _id: productId })
@@ -28,7 +29,7 @@ const createReview = async (req, res) => {
 
 const getAllReviews = async (req, res) => {
 
-    // using the populate method
+    // Using the populate method.
     const reviews = await Review.find({})
         .populate({ path: 'product', select: 'name company price' })
 
@@ -37,6 +38,7 @@ const getAllReviews = async (req, res) => {
 
 const getSingleReview = async (req, res) => {
 
+    // Getting the single review.
     const { id: reviewId } = req.params
     const review = await Review.findOne({ _id: reviewId })
 
@@ -48,6 +50,7 @@ const getSingleReview = async (req, res) => {
 
 const updateReview = async (req, res) => {
 
+    // Updating the review.
     const { id: reviewId } = req.params
     const { rating, title, comment } = req.body
 
@@ -57,14 +60,14 @@ const updateReview = async (req, res) => {
     }
 
     checkPermissions(req.user, review.user)
-    review.rating = rating; review.title = title
-    review.comment = comment
+    review.rating = rating; review.title = title; review.comment = comment
     review.save()
     res.status(StatusCodes.OK).json({ review })
 }
 
 const deleteReview = async (req, res) => {
 
+    // Deleting the review.
     const { id: reviewId } = req.params
     const review = await Review.findOne({ _id: reviewId })
 

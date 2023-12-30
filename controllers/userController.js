@@ -6,26 +6,26 @@ const { createTokenUser, attachCookiesToResponse,
 
 const getAllUsers = async (req, res) => {
 
-    // sending all the users with role user
+    // Sending all the users with role user.
     const users = await User.find({ role: 'user' }).select('-password')
     res.status(StatusCodes.OK).json({ users })
 }
 
 const getSingleUser = async (req, res) => {
 
-    // finding user by id
+    // Finding user by id.
     const user = await User.findOne({ _id: req.params.id }).select('-password')
     if (!user) {
         throw new CustomError.NotFoundError(`No user found with id ${req.params.id}`)
     }
 
-    // checking if user is seeing his/her profile
+    // Checking if user is seeing his/her profile.
     checkPermissions(req.user, user._id)
     res.status(StatusCodes.OK).json({ user })
 }
 
 const showCurrentUser = async (req, res) => {
-    // sending the loggedin user
+    // Snding the loggedin user.
     res.status(StatusCodes.OK).json({ user: req.user })
 }
 
@@ -40,14 +40,13 @@ const updateUser = async (req, res) => {
     user.email = email;
     user.name = name;
 
-    // saving the updated user
+    // Saving the updated user.
     await user.save();
 
     const tokenUser = createTokenUser(user);
     attachCookiesToResponse({ res, user: tokenUser });
     res.status(StatusCodes.OK).json({ user: tokenUser });
 }
-
 
 const updateUserPassword = async (req, res) => {
 

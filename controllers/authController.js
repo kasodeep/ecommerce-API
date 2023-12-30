@@ -5,49 +5,48 @@ const CustomError = require('../errors')
 
 const register = async (req, res) => {
 
-    // taking the values 
+    // Taking the values. 
     const { email, name, password } = req.body
 
-    // first registered user is an admin
+    // First registered user is an admin.
     const isFirstAccount = await User.countDocuments({}) === 0;
     const role = isFirstAccount ? 'admin' : 'user'
 
-    // create the user
+    // Create the user.
     const user = await User.create({ name, email, password, role })
 
-    // creating the token and set the cookie
+    // Creating the token and set the cookie.
     const tokenUser = createTokenUser(user)
     attachCookiesToResponse({ res, user: tokenUser })
 
     res.status(StatusCodes.CREATED).json({ user: tokenUser })
 }
 
-
 const login = async (req, res) => {
 
-    // taking the value
+    // Taking the values.
     const { email, password } = req.body
 
-    // check if email and password is provided
+    // Check if email and password is provided.
     if (!email || !password) {
         throw new CustomError.BadRequestError('Please provide email and password')
     }
 
-    // finding the user
+    // Finding the user.
     const user = await User.findOne({ email })
 
-    // check if user exists
+    // Check if user exists.
     if (!user) {
         throw new CustomError.UnauthenticatedError('Invalid Credentials')
     }
 
-    // comparing the passwords
+    // Comparing the passwords.
     const isPasswordCorrect = user.comparePassword(password)
     if (!isPasswordCorrect) {
         throw new CustomError.UnauthenticatedError('Invalid Credentials')
     }
 
-    // creating the token and set the cookie
+    // Creating the token and set the cookie.
     const tokenUser = createTokenUser(user)
     attachCookiesToResponse({ res, user: tokenUser })
 
@@ -56,7 +55,7 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
 
-    // removing the cookie
+    // Removing the cookie.
     res.cookie('token', 'logout', {
         httpOnly: true,
         expires: new Date(Date.now())

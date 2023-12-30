@@ -1,4 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
+
+// For Handling Errors of Mongoose.
 const errorHandlerMiddleware = (err, req, res, next) => {
 
     let customError = {

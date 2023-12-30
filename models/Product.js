@@ -70,17 +70,17 @@ const ProductSchema = new mongoose.Schema({
     toJSON: { virtuals: true }, toObject: { virtuals: true }
 })
 
+// Seting Up Virtual Reiviews.
 ProductSchema.virtual('reviews', {
     ref: 'Review',
     localField: '_id',
     foreignField: 'product',
     justOne: false
-    // match: { rating: 5 }
 })
 
 ProductSchema.pre('remove', async function () {
 
-    // deleting the reviews for deleted product
+    // Deleting the reviews for deleted product.
     await this.model('Review').deleteMany({
         product: this._id
     })

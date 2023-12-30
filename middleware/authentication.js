@@ -3,18 +3,17 @@ const { isTokenValid } = require('../utils')
 
 const authenticateUser = async (req, res, next) => {
 
-    // getting the token from cookie
+    // Getting the token from cookie.
     const token = req.signedCookies.token
     if (!token) {
         throw new CustomError.UnauthenticatedError('Authentication Invalid')
     }
 
     try {
-        // setting the req.user object
+        // Setting the req.user object.
         const { name, userId, role } = isTokenValid({ token })
         req.user = { name, userId, role }
         next()
-
     } catch (error) {
         throw new CustomError.UnauthenticatedError('Authentication Invalid')
     }
@@ -22,9 +21,8 @@ const authenticateUser = async (req, res, next) => {
 
 const authorizePermissions = (...roles) => {
 
-    //  A callback function required by express
+    //  A callback function required by express.
     return (req, res, next) => {
-
         if (!roles.includes(req.user.role)) {
             throw new CustomError.UnauthorizedError('Unauthorized to access this route')
         }
